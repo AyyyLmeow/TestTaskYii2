@@ -91,7 +91,7 @@ $this->params['breadcrumbs'][] = $this->title;
         formData.append('SignupForm[photo_url]', $('#signupform-photo_url')[0].files[0]);
         // console.log(data);
         $.ajax({
-            url: 'http://yiitask2back:81/api/sign-up/signup',
+            url: 'http://yiitask2back:80/api/sign-up/signup',
             headers: {'Access-Control-Allow-Origin' : '*'},
             method: 'post',
             cache: false,
@@ -105,7 +105,7 @@ $this->params['breadcrumbs'][] = $this->title;
             },
             success: function(formData){
                 alert("Complete registration using your E-mail");
-                window.location.href = "http://yiitask2front:81/";
+                window.location.href = "http://yiitask2front:80/";
             }
         });
         return false

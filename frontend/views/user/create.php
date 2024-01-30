@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
         }
         console.log(data);
         $.ajax({
-            url: 'http://yiitask2back:81/api/user/create',
+            url: 'http://yiitask2back:80/api/user/create',
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Authorization': 'Bearer ' + Cookies.get('token')
@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
             },
             success: function (data) {
                 console.log(data)
-                window.location.href = "http://yiitask2front:81/user/view?id=" + id;
+                window.location.href = "http://yiitask2front:80/user/view?id=" + id;
             }
         });
         return false

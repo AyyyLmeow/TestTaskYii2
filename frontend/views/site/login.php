@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
         });
         console.log($data);
         $.ajax({
-            url: 'http://yiitask2back:81/api/auth/login',
+            url: 'http://yiitask2back:80/api/auth/login',
             headers: {'Access-Control-Allow-Origin' : '*'},
             method: 'post',
             dataType: 'json',
@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
             },
             success: function(data){
                 Cookies.set('token', data.token);
-                window.location.href = "http://yiitask2front:81/";
+                window.location.href = "http://yiitask2front:80/";
             }
         });
         return false

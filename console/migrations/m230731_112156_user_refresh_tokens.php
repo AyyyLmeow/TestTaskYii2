@@ -21,17 +21,7 @@ class m230731_112156_user_refresh_tokens extends Migration
         'urf_created' => $this->dateTime()->notNull()->comment('UTC'),
 
        ]);
-       
-        /*CREATE TABLE `user_refresh_tokens` (
-            `user_refresh_tokenID` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-            `urf_userID` INT(10) UNSIGNED NOT NULL,
-            `urf_token` VARCHAR(1000) NOT NULL,
-            `urf_ip` VARCHAR(50) NOT NULL,
-            `urf_user_agent` VARCHAR(1000) NOT NULL,
-            `urf_created` DATETIME NOT NULL COMMENT 'UTC',
-            PRIMARY KEY (`user_refresh_tokenID`)
-        )
-        COMMENT='For JWT authentication process';*/
+
     }
 
     /**

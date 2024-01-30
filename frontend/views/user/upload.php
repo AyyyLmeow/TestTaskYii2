@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
         console.log(formData);
         let id = <?= Yii::$app->request->get('id') ?>;
             $.ajax({
-                url: "http://yiitask2back:81/api/user/upload?id=" + id,
+                url: "http://yiitask2back:80/api/user/upload?id=" + id,
                 headers: {
                     'Access-Control-Allow-Origin': '*',
                     'Authorization': 'Bearer ' + Cookies.get('token')
@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 },
                 success: function (data) {
                     // console.log(data);
-                    // window.location.href = "http://yiitask2front:81/user/view?id="+data.id;
+                    // window.location.href = "http://yiitask2front:80/user/view?id="+data.id;
                 }
             })
         // })

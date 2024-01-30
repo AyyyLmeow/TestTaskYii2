@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <script>
 let id =<?= Yii::$app->request->get('id') ?>;
     $.ajax({
-        url: "http://yiitask2back:81/api/users/" + id,
+        url: "http://yiitask2back:80/api/users/" + id,
         headers: {
             'Access-Control-Allow-Origin': '*',
             'Authorization': 'Bearer ' + Cookies.get('token')

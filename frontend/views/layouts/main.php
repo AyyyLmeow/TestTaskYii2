@@ -100,7 +100,7 @@ AppAsset::register($this);
     $(document).ready(function () {
         $(document).on('click', '#btn-logout', function () {
             $.ajax({
-                url: 'http://yiitask2back:81/api/auth/logout',
+                url: 'http://yiitask2back:80/api/auth/logout',
                 headers: {'Access-Control-Allow-Origin': '*'},
                 method: 'POST',
                 error: function (request, error) {

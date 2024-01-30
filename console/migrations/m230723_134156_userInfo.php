@@ -12,19 +12,19 @@ class m230723_134156_userInfo extends Migration
      */
     public function safeUp()
   {
-        $this->createTable('{{%user_info}}', [
+        $this->createTable('{{%userInfo}}', [
             'id' => $this->primaryKey(),
             'surname' => $this->string()->notNull(),
             'name' => $this->string()->notNull(),
             'patronymic' => $this->string()->notNull(),
-            'iin' => $this->string()->unique(),
-            'birth_data' => $this->string()->notNull(),
+            'iin' => $this->string(12)->unique(),
+            'birth_data' => $this->date(),
             'photo_url' => $this->string(),
             'auth_id' => $this->integer(),
             ]);
         $this->addForeignKey(
                 'auth_id',  // это "условное имя" ключа
-                '{{%user_info}}', // это название текущей таблицы
+                '{{%userInfo}}', // это название текущей таблицы
                 'auth_id', // это имя поля в текущей таблице, которое будет ключом
                 'user', // это имя таблицы, с которой хотим связаться
                 'id', // это поле таблицы, с которым хотим связаться
@@ -37,6 +37,8 @@ class m230723_134156_userInfo extends Migration
      */
     public function safeDown()
     {
+        $this->dropTable('{{%userInfo}}');
+
         echo "m230723_134156_userInfo cannot be reverted.\n";
 
         return false;

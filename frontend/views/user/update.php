@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = 'Update';
 <script>
     let id = <?= $_GET['id'] ?? 'undefined'; ?>;
         $.ajax({
-            url: "http://yiitask2back:81/api/users/" + id,
+            url: "http://yiitask2back:80/api/users/" + id,
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Authorization': 'Bearer ' + Cookies.get('token')
@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = 'Update';
             alert('Enter your email');
         }
         $.ajax({
-            url: 'http://yiitask2back:81/api/user/update?id=' + id,
+            url: 'http://yiitask2back:80/api/user/update?id=' + id,
             headers: {
                 'Access-Control-Allow-Origin': '*',
                 'Authorization': 'Bearer ' + Cookies.get('token')
@@ -76,7 +76,7 @@ $this->params['breadcrumbs'][] = 'Update';
                 alert(" Can't do because: " + error);
             },
             success: function (data) {
-                window.location.href = "http://yiitask2front:81/user/view?id=" + id;
+                window.location.href = "http://yiitask2front:80/user/view?id=" + id;
             }
         });
         return false

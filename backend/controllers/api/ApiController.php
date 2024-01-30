@@ -13,7 +13,7 @@ class ApiController extends Controller
     public static function allowedDomains()
     {
         return [
-            'http://yiitask2front:81/',
+            'http://yiitask2front:80/',
         ];
     }
 
