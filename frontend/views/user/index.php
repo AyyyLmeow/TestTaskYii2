@@ -59,10 +59,9 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 
 <script>
-    let datas = {pages: {currentPage: 1, totalCount : 0,
-        pageCount : 0, pageSize : 10}};
-
-    $(document).ready(function loadData(page, sort, order) {
+    let datasPages = {currentPage: 1, totalCount : 0,
+            pageCount : 0, pageSize : 10};
+    function loadData(page, sort, order) {
         $.ajax({
             url: 'http://yiitask2back:80/api/users?page=' + page,
             headers: {
@@ -80,7 +79,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 alert(" Can't do because: " + error);
             },
             success: function (data) {
-                // console.log(data);
                 $('tbody').empty();
                 datasPages = data.pages;
                 $.each(data.models, function (index, value) {
@@ -89,43 +87,48 @@ $this->params['breadcrumbs'][] = $this->title;
             }
         })
 
-            // Обработка клика на кнопке "Next" для перехода на следующую страницу
-            $(document).on('click', '#next-page', function() {
-                let currentPage = datasPages.currentPage;
-                if (currentPage < datasPages.pageCount) {
-                    loadData(currentPage + 1);
-                }
-                else{
-                    console.log('nope');
-                }
-            });
 
-            $(document).on('click', '#sort-id', function(e) {
-                {
-                    let currentSort = $(this).data('sort'); // Устанавливаем поле сортировки по умолчанию
-                    let currentOrder = $(this).data('order');// Устанавливаем порядок сортировки по умолчанию
-
-                    // Меняем порядок сортировки
-                    $(this).data('order', (currentOrder === 'asc') ? 'desc' : 'asc');
-
-                    // Вызываем функцию loadData с актуальными параметрами сортировки и направления
-                    loadData(datasPages.currentPage, currentSort, currentOrder);
-                }
-            });
-
-            // Обработка клика на кнопке "Previous" для перехода на предыдущую страницу
-            $(document).on('click', '#prev-page', function() {
-                let currentPage = datasPages.currentPage;
-                if (currentPage > 1) {
-                    loadData(currentPage - 1);
-                }
-                else {
-                    console.log('nuh-uh');
-                }
-            });
     }
-    )
+    $(window).on('load', function (){
+        loadData()
+    })
+
     $(document).ready(function () {
+        $(document).on('click', '#sort-id', function() {
+            {
+                let currentSort = $(this).data('sort'); // Устанавливаем поле сортировки по умолчанию
+                let currentOrder = $(this).data('order');// Устанавливаем порядок сортировки по умолчанию
+
+                // Меняем порядок сортировки
+                $(this).data('order', (currentOrder === 'asc') ? 'desc' : 'asc');
+
+                // Вызываем функцию loadData с актуальными параметрами сортировки и направления
+                loadData(datasPages.currentPage, currentSort, currentOrder);
+            }
+        });
+        // Обработка клика на кнопке "Next" для перехода на следующую страницу
+        $(document).on('click', '#next-page', function() {
+            let currentPage = datasPages.currentPage;
+            if (currentPage < datasPages.pageCount) {
+                loadData(currentPage + 1);
+            }
+            else{
+                console.log('nope');
+            }
+        });
+
+
+        // Обработка клика на кнопке "Previous" для перехода на предыдущую страницу
+        $(document).on('click', '#prev-page', function() {
+            let currentPage = datasPages.currentPage;
+            if (currentPage > 1) {
+                loadData(currentPage - 1);
+            }
+            else {
+                console.log('nuh-uh');
+            }
+        });
+
         $(document).on('click', '.item-activate', function () {
             let dataIdValue = $(this).data('key');
             $.ajax({
