@@ -30,8 +30,8 @@ $this->params['breadcrumbs'][] = $this->title;
             <thead>
             <tr>
                 <th>#</th>
-                <th><a href="#" id="sort-id" data-sort="id" data-order="asc">ID</a></th>
-                <th><a href="/user/index?sort=username" id="sort-user" data-sort="username">Username</a></th>
+                <th><a href="#" id="sort-id" class="sortable-column" data-sort="id" data-order="asc">ID</a></th>
+                <th><a href="#" id="sort-user" class="sortable-column" data-sort="username" data-order="asc">Username</a></th>
                 <th>Email</th>
                 <th>Status</th>
                 <th>Created at</th>
@@ -94,8 +94,9 @@ $this->params['breadcrumbs'][] = $this->title;
     })
 
     $(document).ready(function () {
-        $(document).on('click', '#sort-id', function() {
+        $(document).on('click', '.sortable-column', function(e) {
             {
+                e.preventDefault();
                 let currentSort = $(this).data('sort'); // Устанавливаем поле сортировки по умолчанию
                 let currentOrder = $(this).data('order');// Устанавливаем порядок сортировки по умолчанию
 

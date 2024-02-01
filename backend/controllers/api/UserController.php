@@ -135,34 +135,6 @@ class UserController extends \yii\rest\ActiveController
 
     function actionIndex()
     {
-        $query = User::find();
-        // Добавляем параметры сортировки
-        $sortAttribute = \Yii::$app->request->get('sort', ''); // Получаем параметр сортировки из запроса
-        $sortOrder = \Yii::$app->request->get('order', 'asc'); // Получаем параметр направления сортировки из запроса
-
-        if ($sortAttribute) {
-            $sort = [$sortAttribute => ($sortOrder === 'asc' ? SORT_DESC : SORT_ASC)];
-            // Добавляем сортировку в запрос
-            $query->orderBy($sort);
-        }
-
-        $countQuery = clone $query;
-        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 10]);
-        $models = $query->offset($pages->offset)
-            ->limit($pages->limit)
-            ->all();
-
-        // Создаем массив данных для ответа
-        $response = [
-            'models' => $models,
-            'pages' => [
-                'totalCount' => $pages->totalCount,
-                'pageCount' => $pages->getPageCount(),
-                'currentPage' => $pages->getPage() + 1, // Текущая страница начинается с 0, поэтому добавляем 1
-                'pageSize' => $pages->getPageSize(),
-            ],
-        ];
-
-        return $response; // Yii2 автоматически преобразует массив в формат JSON
+        return $this->service->index();
     }
 }
