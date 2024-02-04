@@ -7,4 +7,4 @@
 7. вход в аккаунт администратора, логин: admin; пароль: 123456789
 8. остальный данные для входа находятся в данных фикстуры user.php (common/fixtures/data)
 9. обращение к папке frontend через алиас yiitask2front, у папки backend это yiitask2back
-10. обращение к API: http://yiitask2back:%номер_http_порта%/api/%действие_API%; как пример http://yiitask2back:80/api/users откроет index страницу со списком пользователей
+10. обращение к API: http://yiitask2back:%номер_http_порта%/api/%действие_API%; как пример http://yiitask2back:80/api/users вернет index страницу со списком пользователей
