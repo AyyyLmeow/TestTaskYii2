@@ -96,13 +96,7 @@ class User extends ActiveRecord implements IdentityInterface
 			->where(['id' => (string) $token->getClaim('uid') ])
 			->andWhere(['<>', 'status', 9])  //adapt this to your needs
 			->one();
-        // foreach (self::$user as $user) {
-        //     if ($user['id'] === (string) $token->getClaim('uid')) {
-        //         return new static($user);
-        //     }
-        // }
 
-        // return null;
     }
 
     /**
@@ -264,11 +258,6 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return $this->hasOne(UserInfo::className(),['auth_id' => 'id']);
     }
-
-//    public function getAuthAssignments()
-//    {
-//        return $this->hasOne(UserInfo::className(),['auth_id' => 'id']);
-//    }
 
     public function getUserRefreshToken()
     {

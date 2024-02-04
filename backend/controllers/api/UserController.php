@@ -41,16 +41,6 @@ class UserController extends \yii\rest\ActiveController
                     'Access-Control-Max-Age' => 3600 * 7,                 // Cache (seconds)
                 ],
             ],
-//            'access' => [
-//                'class' => AccessControl::className(),
-//                'rules' => [
-//                    [
-//                        'actions' => ['create', 'view', 'index', 'user'],
-//                        'allow' => true,
-//                        'roles' => ['admin'],
-//                    ],
-//                ],
-//            ],
             'authenticator' => [
                 'class' => \sizeg\jwt\JwtHttpBearerAuth::class,
                 'optional' => ['login','logout', 'sign-up'],
@@ -71,9 +61,6 @@ class UserController extends \yii\rest\ActiveController
     {
         parent::beforeAction($action);
         $user = \Yii::$app->user->identity;
-//        $request = \Yii::$app->request;
-//        $roles = \Yii::$app->authManager->getRolesByUser(\Yii::$app->user->getId());
-//        $role = \Yii::$app->user->can('admin');
         \Yii::$app->response->format = Response::FORMAT_JSON;
 
         if (\Yii::$app->user->can('admin')) {
@@ -98,9 +85,7 @@ class UserController extends \yii\rest\ActiveController
     {
         $actions = parent::actions();
 
-        // отключить действия "update" и "create"
         unset($actions['update'], $actions['create'], $actions['index']);
-
 
         return $actions;
     }

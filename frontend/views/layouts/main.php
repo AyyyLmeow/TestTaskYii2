@@ -48,9 +48,9 @@ AppAsset::register($this);
         ['label' => 'About', 'url' => ['/site/about']],
         ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-    }
+//    if (Yii::$app->user->isGuest) {
+//        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
+//    }
 
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav me-auto mb-2 mb-md-0'],
@@ -96,6 +96,7 @@ AppAsset::register($this);
         $('#w1').append('<li class="nav-item"><a class="nav-link" href="/user/index">User</a></li>');
     } else {
         $('#w1').after('<div class="d-flex"><a class="btn btn-link login text-decoration-none" href="/site/login">login</a></div>');
+        $('#w1').append('<a class="nav-link" href="/site/signup">Signup</a>');
     }
     $(document).ready(function () {
         $(document).on('click', '#btn-logout', function () {

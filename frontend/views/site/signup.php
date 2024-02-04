@@ -73,14 +73,8 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 <script>
     var $data = {};
-    // переберём все элементы input, textarea и select формы с id="myForm "
+    // переберём все элементы input, textarea и select формы с id="form-signup"
     $('#form-signup').submit(function () {
-        // $('#form-signup').find('input').each(function () {
-        //     // добавим новое свойство к объекту $data
-        //     // имя свойства – значение атрибута name элемента
-        //     // значение свойства – значение свойство value элемента
-        //     $data[this.name] = $(this).val();
-        // });
         event.preventDefault();
         let that = $(this),
             data = new FormData(that.get(0));
@@ -89,11 +83,10 @@ $this->params['breadcrumbs'][] = $this->title;
         formData.append('password', $('#signupform-password').val());
         formData.append('email', $('#signupform-email').val());
         formData.append('SignupForm[photo_url]', $('#signupform-photo_url')[0].files[0]);
-        // console.log(data);
         $.ajax({
             url: 'http://yiitask2back:80/api/sign-up/signup',
             headers: {'Access-Control-Allow-Origin' : '*'},
-            method: 'post',
+            method: 'POST',
             cache: false,
             contentType: false,
             processData: false,

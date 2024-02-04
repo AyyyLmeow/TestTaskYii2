@@ -51,5 +51,4 @@ $this->title = 'My Yii Application';
     </div>
 </div>
 <script>
-    // console.log(get_token());
 </script>

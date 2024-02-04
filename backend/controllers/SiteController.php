@@ -24,25 +24,7 @@ class SiteController extends Controller
      */
     public function behaviors()
     {
-        // $behaviors = parent::behaviors();
-        // $behaviors['authenticator'] = [
-        //     'class' => \sizeg\jwt\JwtHttpBearerAuth::class,
-        // ];
         return [
-//            'access' => [
-//                'class' => AccessControl::class,
-//                'rules' => [
-//                    [
-//                        'actions' => ['login', 'error'],
-//                        'allow' => true,
-//                    ],
-//                    [
-//                        'actions' => ['logout', 'index'],
-//                        'allow' => true,
-//                        'roles' => ['@'],
-//                    ],
-//                ],
-//            ],
             'authenticator' => [
                 'class' => \sizeg\jwt\JwtHttpBearerAuth::class,
                 'optional' => ['login', 'index','logout'],
@@ -55,7 +37,6 @@ class SiteController extends Controller
                 
             ],
         ];
-        // return $behaviors;
     }
 
     /**
@@ -97,12 +78,6 @@ class SiteController extends Controller
         
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             $user = Yii::$app->user->identity;
-
-//			$token = $this->generateJwt($user);
-//
-//			$this->generateRefreshToken($user);
-//            $cookies = Yii::$app->request->cookies;
-//            $tokentoken = Yii::$app->request->cookies->getValue('token', false);
 
             return $this->goBack();
 

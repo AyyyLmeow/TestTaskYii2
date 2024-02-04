@@ -58,11 +58,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     alert(" Can't do because: " + error);
                 },
                 success: function (data) {
-                    // console.log(data);
-                    // window.location.href = "http://yiitask2front:80/user/view?id="+data.id;
+                    window.location.href = "http://yiitask2front:80/user/view?id="+data.id;
                 }
             })
-        // })
         return false;
     })
 </script>

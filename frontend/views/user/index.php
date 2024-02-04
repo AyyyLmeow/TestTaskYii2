@@ -113,9 +113,6 @@ $this->params['breadcrumbs'][] = $this->title;
             if (currentPage < datasPages.pageCount) {
                 loadData(currentPage + 1);
             }
-            else{
-                console.log('nope');
-            }
         });
 
 
@@ -124,9 +121,6 @@ $this->params['breadcrumbs'][] = $this->title;
             let currentPage = datasPages.currentPage;
             if (currentPage > 1) {
                 loadData(currentPage - 1);
-            }
-            else {
-                console.log('nuh-uh');
             }
         });
 

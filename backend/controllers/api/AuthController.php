@@ -51,8 +51,6 @@ class AuthController extends ApiController
         if ($model->validate() && $model->login()) {
             $user = Yii::$app->user->identity;
 
-            $cookies = Yii::$app->response->cookies;
-
             $token = $this->generateJwt($user);
 
 
@@ -93,7 +91,6 @@ class AuthController extends ApiController
     private function generateRefreshToken(User $user, User $impersonator = null): \app\models\UserRefreshTokens {
         $refreshToken = Yii::$app->security->generateRandomString(200);
 
-        // TODO: Don't always regenerate - you could reuse existing one if user already has one with same IP and user agent
         $userRefreshToken = new \app\models\UserRefreshTokens([
             'urf_userID' => $user->id,
             'urf_token' => $refreshToken,

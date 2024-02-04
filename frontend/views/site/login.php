@@ -41,16 +41,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
 </div>
 <script>
-    var $data = {};
+    let $data = {};
     // переберём все элементы input, textarea и select формы с id="myForm "
     $('#login-form').submit(function () {
         $('#login-form').find('input').each(function () {
             // добавим новое свойство к объекту $data
-            // имя свойства – значение атрибута name элемента
-            // значение свойства – значение свойство value элемента
             $data[this.name] = $(this).val();
         });
-        console.log($data);
         $.ajax({
             url: 'http://yiitask2back:80/api/auth/login',
             headers: {'Access-Control-Allow-Origin' : '*'},

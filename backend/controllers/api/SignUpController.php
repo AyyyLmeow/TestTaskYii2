@@ -20,27 +20,12 @@ class SignUpController extends ApiController
     public function behaviors()
     {
         return array_merge(parent::behaviors(), [
-//            'access' => [
-//                'class' => AccessControl::class,
-//                'only' => ['signup'],
-//                'rules' => [
-//                    [
-//                        'actions' => ['signup'],
-//                        'allow' => true,
-//                        'roles' => ['?'],
-//                    ],
-//                ],
-//            ],
             'verbs' => [
                 'class' => VerbFilter::class,
                 'actions' => [
                     'signup' => ['post'],
                 ],
             ],
-//            'jwtAuth' => [
-//                'class' => JwtHttpBearerAuth::class,
-//                'optional' => ['signup','index'], // Указываем, какие действия не требуют аутентификации
-//            ],
         ]);
     }
     public function actionSignup()
@@ -50,11 +35,9 @@ class SignUpController extends ApiController
         $model->username = Yii::$app->request->post('username');
         $model->email = Yii::$app->request->post('email');
         $model->eventImage = UploadedFile::getInstance($model, 'photo_url');
-//        $notfunny1 = $model->validate();
-//        $notfunny2 = $model->signup();
         if ($model->validate() && $model->signup()) {
             return true;
-        };
+        }
         return $model->getErrors();
     }
 

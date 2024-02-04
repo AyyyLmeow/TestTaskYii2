@@ -89,6 +89,12 @@ class SignupForm extends Model
     protected function setAuthIdPhotoUrlAndSave($user, $userInfo){
 
         $userInfo->auth_id = $user->id;
+        $userInfo->surname = '';
+        $userInfo->name = '';
+        $userInfo->patronymic = '';
+        $userInfo->birth_data = '';
+        $userInfo->photo_url = '';
+        $userInfo->unique = '';
         if (isset($userInfo->eventImage)) {
             $path = $userInfo->uploadPath() . $userInfo->auth_id . "." . $this->eventImage->extension;
             $userInfo->eventImage->saveAs($path);
@@ -96,6 +102,7 @@ class SignupForm extends Model
             return $userInfo->save(false);
         }
         else{
+//            $test =
             $userInfo->photo_url = "default.jpg" ;
             return $userInfo->save(false);
         }

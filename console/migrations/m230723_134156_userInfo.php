@@ -14,9 +14,9 @@ class m230723_134156_userInfo extends Migration
   {
         $this->createTable('{{%userInfo}}', [
             'id' => $this->primaryKey(),
-            'surname' => $this->string()->notNull(),
-            'name' => $this->string()->notNull(),
-            'patronymic' => $this->string()->notNull(),
+            'surname' => $this->string(),
+            'name' => $this->string(),
+            'patronymic' => $this->string(),
             'iin' => $this->string(12)->unique(),
             'birth_data' => $this->date(),
             'photo_url' => $this->string(),

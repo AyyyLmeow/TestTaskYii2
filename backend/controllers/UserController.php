@@ -23,7 +23,7 @@ class UserController extends Controller
      * @inheritDoc
      */
     public function behaviors()
-    {   $cookies = Yii::$app->request->cookies;
+    {
         return array_merge(
             parent::behaviors(),
             [
@@ -33,9 +33,6 @@ class UserController extends Controller
                         'delete' => ['POST'],
                     ],
                 ],
-                // 'authenticator' => [
-                //     'class' => \sizeg\jwt\JwtHttpBearerAuth::class
-                // ],
             ]
         );
     }
@@ -50,16 +47,6 @@ class UserController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => User::find(),
             'sort' => ['attributes' => ['id','username']]
-            /*
-            'pagination' => [
-                'pageSize' => 50
-            ],
-            'sort' => [
-                'defaultOrder' => [
-                    'id' => SORT_DESC,
-                ]
-            ],
-            */
         ]);
 
         return $this->render('index', [

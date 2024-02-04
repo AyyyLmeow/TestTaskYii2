@@ -38,7 +38,6 @@ class UserInfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-           /*[['surname', 'name', 'patronymic', 'birth_data'], 'required'],*/
             [['auth_id'], 'default', 'value' => null],
             [['auth_id'], 'integer'],
             [['surname', 'name', 'patronymic', 'birth_data', 'photo_url'], 'string', 'max' => 255],
@@ -84,7 +83,7 @@ class UserInfo extends \yii\db\ActiveRecord
 
         if (true) {
             $path = $this->uploadPath() . $this->id . "." . $this->eventImage->extension;
-            $this->eventImage->saveAs($path);//пока остановился тут
+            $this->eventImage->saveAs($path);
             $this->photo_url = $this->id . "." .$this->eventImage->extension;
             $this->save(false);
             return true;
