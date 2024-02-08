@@ -23,7 +23,7 @@ class ApiController extends Controller
             'corsFilter'  => [
                 'class' => \yii\filters\Cors::className(),
                 'cors'  => [
-                    'Origin' => ['http://yiitask2front:81/'],
+                    'Origin' => ['http://yiitask2front:80/'],
                     'Access-Control-Request-Method'    => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
                     'Access-Control-Allow-Credentials' => true,
                     'Access-Control-Max-Age'           => 3600 * 7,                 // Cache (seconds)
