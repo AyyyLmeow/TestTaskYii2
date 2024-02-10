@@ -94,7 +94,6 @@ class SignupForm extends Model
         $userInfo->patronymic = '';
         $userInfo->birth_data = '';
         $userInfo->photo_url = '';
-        $userInfo->unique = '';
         if (isset($userInfo->eventImage)) {
             $path = $userInfo->uploadPath() . $userInfo->auth_id . "." . $this->eventImage->extension;
             $userInfo->eventImage->saveAs($path);
