@@ -2,6 +2,7 @@
 
 namespace backend\controllers\api;
 
+use common\helpers\JWTHelper;
 use common\models\User;
 use yii\rest\Controller;
 use yii\web\Response;
@@ -45,6 +46,6 @@ class ApiController extends Controller
 
     protected function getUser()
     {
-        return \JWTHelper::getUserByToken(\Yii::$app->request->headers->get('Authorization'));
+        return JWTHelper::getUserByToken(\Yii::$app->request->headers->get('Authorization'));
     }
 }

@@ -71,7 +71,8 @@ class UserController extends \yii\rest\ActiveController
             if ($action->id != 'index' && $_GET['id'] == $user->id) {
                 return true;
             }else{
-                throw new ForbiddenHttpException('Access denied');
+               throw new ForbiddenHttpException('Access denied');
+
             }
         }
         if (\Yii::$app->user->can($action->id)) {
