@@ -19,7 +19,7 @@ use yii\helpers\Url;
  * @property string|null $photo_url
  * @property int|null $auth_id
  *
- * @property User $auth
+ * @property User $authService
  */
 class UserInfo extends \yii\db\ActiveRecord
 {

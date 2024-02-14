@@ -13,10 +13,18 @@ use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\rest\Controller;
 use yii\web\UploadedFile;
+use backend\services\SignUpService;
 
 class SignUpController extends ApiController
 {
 
+    private $service;
+
+    public function __construct($id, $module, $config = [], SignUpService $service)
+    {
+        parent::__construct($id, $module, $config);
+        $this->service = $service;
+    }
     public function behaviors()
     {
         return array_merge(parent::behaviors(), [
@@ -30,15 +38,7 @@ class SignUpController extends ApiController
     }
     public function actionSignup()
     {
-        $model = new SignupForm();
-        $model->password = Yii::$app->request->post('password');
-        $model->username = Yii::$app->request->post('username');
-        $model->email = Yii::$app->request->post('email');
-        $model->eventImage = UploadedFile::getInstance($model, 'photo_url');
-        if ($model->validate() && $model->signup()) {
-            return true;
-        }
-        return $model->getErrors();
+        $this->service->actionSignup();
     }
 
 }

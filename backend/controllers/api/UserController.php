@@ -10,11 +10,8 @@ use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\rest\Action;
 use yii\web\ForbiddenHttpException;
-use yii\web\HttpException;
-use yii\web\NotFoundHttpException;
 use yii\web\Response;
-use yii\web\UploadedFile;
-use yii\data\Pagination;
+
 
 class UserController extends \yii\rest\ActiveController
 {
