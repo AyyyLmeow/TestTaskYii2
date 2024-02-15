@@ -83,7 +83,7 @@ class UserController extends \yii\rest\ActiveController
     {
         $actions = parent::actions();
 
-        unset($actions['update'], $actions['create'], $actions['index']);
+        unset($actions['update'], $actions['create'], $actions['index'], $actions['delete']);
 
         return $actions;
     }
@@ -114,6 +114,10 @@ class UserController extends \yii\rest\ActiveController
     {
         return $this->service->uploadUserPicture($this->request->get('id'));
 
+    }
+
+    function deleteUser(){
+        $this->service->deleteUser($this->request->get('id'));
     }
 
     function actionIndex()

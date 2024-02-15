@@ -91,6 +91,12 @@ class UserService
         return array_merge($model->getErrors(), $model->userInfo->getErrors());
     }
 
+    function deleteUser($id){
+        $this->getModel($id)->delete();
+
+        return true;
+    }
+
     function uploadUserPicture($id)
     {
         $model = $this->getModel($id);
